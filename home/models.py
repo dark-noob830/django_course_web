@@ -31,12 +31,12 @@ class Section(models.Model):
 
 class Video(models.Model):
     name = models.CharField(max_length=100)
-    slug = models.SlugField(max_length=100, unique=True, db_index=True)
+    video_file = models.FileField(upload_to='videos/%Y/%m/%d')
+    slug = models.SlugField(max_length=100, unique=True, db_index=True,blank=True)
     section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name='videos')
     is_free = models.BooleanField(default=False,db_index=True)
     description = models.TextField()
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    video_file = models.FileField(upload_to='videos/%Y/%m/%d')
 
     def save(self, *args, **kwargs):
         if not self.slug:
