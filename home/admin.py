@@ -3,7 +3,7 @@ from .models import Course , Section,Video
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    pass
+    exclude = ['slug']
 
 @admin.register(Section)
 class SectionAdmin(admin.ModelAdmin):
@@ -11,5 +11,6 @@ class SectionAdmin(admin.ModelAdmin):
 
 @admin.register(Video)
 class VideoAdmin(admin.ModelAdmin):
-    pass
+    exclude = ['slug']
+
 
